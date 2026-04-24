@@ -58,22 +58,28 @@ namespace L0LeRModMenu
                 menuOpen = !menuOpen;
         }
 
-        public override void OnGUI()
+public override void OnGUI()
         {
             if (!menuOpen) return;
 
             GUI.color = Color.white;
             GUI.backgroundColor = Color.black;
-            windowRect = GUI.Window(0, menuRect, DrawMenu windowID, "<color=white>Issue's Hack</color>");
+            
+            // fix
+            windowRect = GUI.Window(0, windowRect, (GUI.WindowFunction)DrawMenu, "<color=white>Issue's Hack</color>");
         }
-
-        private void DrawMenu(intwindowID)
+        
+        private void DrawMenu(int windowID)
         {
-            GUI.DragWindow(new Rect(0, 0, menuRect.width, 20));
+            // fixed maybe
+            GUI.DragWindow(new Rect(0, 0, windowRect.width, 20));
+            
             currentTab = GUILayout.Toolbar(currentTab, tabNames);
+            
             GUILayout.BeginVertical();
             switch (currentTab)
             {
+                // next
                 case 0: DrawBabyAI(); break;
                 case 1: DrawGrannyAI(); break;
                 case 2: DrawGrandpaAI(); break;
