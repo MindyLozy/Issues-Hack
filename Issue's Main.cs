@@ -64,7 +64,7 @@ namespace L0LeRModMenu
 
             GUI.color = Color.white;
             GUI.backgroundColor = Color.black;
-            menuRect = GUI.Window(0, menuRect, DrawMenu, "<color=white>L0LeR Mod Menu (L0LeR с Белым Оттенком)</color>");
+            menuRect = GUI.Window(0, menuRect, DrawMenu(int windowID), "<color=white>L0LeR Mod Menu</color>");
         }
 
         private void DrawMenu(int windowID)
