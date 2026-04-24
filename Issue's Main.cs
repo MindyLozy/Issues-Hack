@@ -88,7 +88,7 @@ namespace L0LeRModMenu
             babyCallGranny = GUILayout.Toggle(babyCallGranny, "Baby Call Granny");
             if (GUILayout.Button("Apply Baby Call Granny"))
             {
-                var baby = FindObjectOfType<AI_Baby>();
+                var baby = GameObject.FindObjectOfType <AI_Baby>();
                 if (baby != null)
                 {
                     var field = typeof(AI_Baby).GetField("CalledGranny", BindingFlags.Public | BindingFlags.Instance);
@@ -99,7 +99,7 @@ namespace L0LeRModMenu
             babyForceChase = GUILayout.Toggle(babyForceChase, "Force Baby Chase Player");
             if (GUILayout.Button("Apply Force Chase"))
             {
-                var baby = FindObjectOfType<AI_Baby>();
+                var baby = GameObject.FindObjectOfType <AI_Baby>();
                 if (baby != null)
                 {
                     var field = typeof(AI_Baby).GetField("Chasing", BindingFlags.Public | BindingFlags.Instance);
@@ -140,7 +140,7 @@ namespace L0LeRModMenu
             grannyEyesColor = GUILayout.TextField(grannyEyesColor, 10);
             if (GUILayout.Button("Apply Color"))
             {
-                var eyes = FindObjectOfType<Eyes_Granny>();
+                var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
                 if (eyes != null)
                 {
                     Color color;
@@ -269,7 +269,7 @@ namespace L0LeRModMenu
 
         private void SetGrannyBool(string fieldName, bool value)
         {
-            var granny = FindObjectOfType<AI_Granny>();
+            var granny = GameObject.FindObjectOfType <AI_Granny>();
             if (granny == null) return;
             var field = typeof(AI_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(granny, value);
@@ -277,7 +277,7 @@ namespace L0LeRModMenu
 
         private void SetGrannyFloat(string fieldName, float value)
         {
-            var granny = FindObjectOfType<AI_Granny>();
+            var granny = GameObject.FindObjectOfType <AI_Granny>();
             if (granny == null) return;
             var field = typeof(AI_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(granny, value);
@@ -285,7 +285,7 @@ namespace L0LeRModMenu
 
         private void SetEyesGrannyBool(string fieldName, bool value)
         {
-            var eyes = FindObjectOfType<Eyes_Granny>();
+            var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
             if (eyes == null) return;
             var field = typeof(Eyes_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(eyes, value);
@@ -293,7 +293,7 @@ namespace L0LeRModMenu
 
         private void SetEyesGrannyFloat(string fieldName, float value)
         {
-            var eyes = FindObjectOfType<Eyes_Granny>();
+            var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
             if (eyes == null) return;
             var field = typeof(Eyes_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(eyes, value);
@@ -301,7 +301,7 @@ namespace L0LeRModMenu
 
         private void SetGrandpaBool(string fieldName, bool value)
         {
-            var grandpa = FindObjectOfType<AI_Grandpa>();
+            var grandpa = GameObject.FindObjectOfType <AI_Grandpa>();
             if (grandpa == null) return;
             var field = typeof(AI_Grandpa).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(grandpa, value);
@@ -309,7 +309,7 @@ namespace L0LeRModMenu
 
         private void SetGrandpaFloat(string fieldName, float value)
         {
-            var grandpa = FindObjectOfType<AI_Grandpa>();
+            var grandpa = GameObject.FindObjectOfType <AI_Grandpa>();
             if (grandpa == null) return;
             var field = typeof(AI_Grandpa).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(grandpa, value);
