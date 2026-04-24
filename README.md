@@ -1,3 +1,3 @@
-# G2E-Hack by brokenError aka. MindyLoozy
-Granny 2 Enchanted VibeCoded Hack yea
-soon 
+# Issue's Hack by MindyLoozy / L0LeR
+IMPORTANT :
+I do not promote cheating in the DVLoper's game series and improvements from OmGi I do this for the purpose of improving my own code
