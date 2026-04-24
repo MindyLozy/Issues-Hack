@@ -54,34 +54,31 @@ namespace L0LeRModMenu
 
         public override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Insert))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Insert))
                 menuOpen = !menuOpen;
         }
 
-public override void OnGUI()
+        public override void OnGUI()
         {
             if (!menuOpen) return;
 
             GUI.color = Color.white;
             GUI.backgroundColor = Color.black;
             
-            // fix
-            windowRect = GUI.Window(0, windowRect, (GUI.WindowFunction)DrawMenu, "<color=white>Issue's Hack</color>");
+            // fix 1
+            menuRect = GUI.Window(0, menuRect, (GUI.WindowFunction)DrawMenu, "<color=white>Issue's Hack</color>");
         }
         
-        public override void OnGUI()
-{
-    if (!menuOpen) return;
-
-    GUI.color = Color.white;
-    GUI.backgroundColor = Color.black;
-    
-    // Используем menuRect, если windowRect выдает ошибку
-    menuRect = GUI.Window(0, menuRect, (GUI.WindowFunction)DrawMenu, "<color=white>Issue's Hack</color>");
-}
+        private void DrawMenu(int windowID)
+        {
+            // fix 2 
+            GUI.DragWindow(new Rect(0, 0, menuRect.width, 20));
+            
+            currentTab = GUILayout.Toolbar(currentTab, tabNames);
+            
+            GUILayout.BeginVertical();
             switch (currentTab)
             {
-                // next
                 case 0: DrawBabyAI(); break;
                 case 1: DrawGrannyAI(); break;
                 case 2: DrawGrandpaAI(); break;
@@ -96,7 +93,7 @@ public override void OnGUI()
             babyCallGranny = GUILayout.Toggle(babyCallGranny, "Baby Call Granny");
             if (GUILayout.Button("Apply Baby Call Granny"))
             {
-                var baby = GameObject.FindObjectOfType <AI_Baby>();
+                var baby = UnityEngine.Object.FindObjectOfType<AI_Baby>();
                 if (baby != null)
                 {
                     var field = typeof(AI_Baby).GetField("CalledGranny", BindingFlags.Public | BindingFlags.Instance);
@@ -107,7 +104,7 @@ public override void OnGUI()
             babyForceChase = GUILayout.Toggle(babyForceChase, "Force Baby Chase Player");
             if (GUILayout.Button("Apply Force Chase"))
             {
-                var baby = GameObject.FindObjectOfType <AI_Baby>();
+                var baby = UnityEngine.Object.FindObjectOfType<AI_Baby>();
                 if (baby != null)
                 {
                     var field = typeof(AI_Baby).GetField("Chasing", BindingFlags.Public | BindingFlags.Instance);
@@ -148,7 +145,7 @@ public override void OnGUI()
             grannyEyesColor = GUILayout.TextField(grannyEyesColor, 10);
             if (GUILayout.Button("Apply Color"))
             {
-                var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
+                var eyes = UnityEngine.Object.FindObjectOfType<Eyes_Granny>();
                 if (eyes != null)
                 {
                     Color color;
@@ -277,7 +274,7 @@ public override void OnGUI()
 
         private void SetGrannyBool(string fieldName, bool value)
         {
-            var granny = GameObject.FindObjectOfType <AI_Granny>();
+            var granny = UnityEngine.Object.FindObjectOfType<AI_Granny>();
             if (granny == null) return;
             var field = typeof(AI_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(granny, value);
@@ -285,7 +282,7 @@ public override void OnGUI()
 
         private void SetGrannyFloat(string fieldName, float value)
         {
-            var granny = GameObject.FindObjectOfType <AI_Granny>();
+            var granny = UnityEngine.Object.FindObjectOfType<AI_Granny>();
             if (granny == null) return;
             var field = typeof(AI_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(granny, value);
@@ -293,7 +290,7 @@ public override void OnGUI()
 
         private void SetEyesGrannyBool(string fieldName, bool value)
         {
-            var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
+            var eyes = UnityEngine.Object.FindObjectOfType<Eyes_Granny>();
             if (eyes == null) return;
             var field = typeof(Eyes_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(eyes, value);
@@ -301,7 +298,7 @@ public override void OnGUI()
 
         private void SetEyesGrannyFloat(string fieldName, float value)
         {
-            var eyes = GameObject.FindObjectOfType <Eyes_Granny>();
+            var eyes = UnityEngine.Object.FindObjectOfType<Eyes_Granny>();
             if (eyes == null) return;
             var field = typeof(Eyes_Granny).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(eyes, value);
@@ -309,7 +306,7 @@ public override void OnGUI()
 
         private void SetGrandpaBool(string fieldName, bool value)
         {
-            var grandpa = GameObject.FindObjectOfType <AI_Grandpa>();
+            var grandpa = UnityEngine.Object.FindObjectOfType<AI_Grandpa>();
             if (grandpa == null) return;
             var field = typeof(AI_Grandpa).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(grandpa, value);
@@ -317,7 +314,7 @@ public override void OnGUI()
 
         private void SetGrandpaFloat(string fieldName, float value)
         {
-            var grandpa = GameObject.FindObjectOfType <AI_Grandpa>();
+            var grandpa = UnityEngine.Object.FindObjectOfType<AI_Grandpa>();
             if (grandpa == null) return;
             var field = typeof(AI_Grandpa).GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (field != null) field.SetValue(grandpa, value);
